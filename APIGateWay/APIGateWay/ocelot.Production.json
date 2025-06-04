@@ -1,0 +1,38 @@
+{
+  "Routes": [
+    //EXAMPLE
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "stockmonitoring-api-app-service.onrender.com",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/appDataHub/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "UseWebSockets": true
+    },
+    //AUTHENTICATE
+    {
+      "DownstreamPathTemplate": "/api/gemini/analyze/text",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "stockmonitoring-api-ai-service.onrender.com",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/gemini/analyze/text",
+      "UpstreamHttpMethod": [ "POST" ],
+      "AuthenticationOptions": { // Authen
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://stockmonitoring-api-gateway.onrender.com"
+  }
+}

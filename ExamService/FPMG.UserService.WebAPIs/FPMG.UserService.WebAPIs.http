@@ -1,0 +1,6 @@
+@FPMG.UserService.WebAPIs_HostAddress = http://localhost:5125
+
+GET {{FPMG.UserService.WebAPIs_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
