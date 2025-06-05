@@ -1,5 +1,7 @@
+using FPMG.GradingService.DataAccessLayers;
 using FPMG.GradingService.Services.Background;
 using FPMG.GradingService.Services.Messaging;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,8 @@ builder.Services.AddSingleton<IEventConsumer, EventConsumer>();
 builder.Services.AddHostedService<EventConsumerBackgroundService>();
 
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddDbContext<GradingManagementDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
