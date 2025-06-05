@@ -1,5 +1,7 @@
+using FPMG.ExamService.DataAccessLayers;
 using FPMG.ExamService.Services.Background;
 using FPMG.ExamService.Services.Messaging;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,8 @@ builder.Services.AddSingleton<IEventConsumer, EventConsumer>();
 builder.Services.AddHostedService<EventConsumerBackgroundService>();
 
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddDbContext<ExamManagementDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddSwaggerGen();
 
 
