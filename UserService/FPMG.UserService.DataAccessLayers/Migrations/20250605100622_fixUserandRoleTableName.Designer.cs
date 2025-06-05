@@ -3,6 +3,7 @@ using FPMG.UserService.DataAccessLayers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FPMG.UserService.DataAccessLayers.Migrations
 {
     [DbContext(typeof(UserManagementDBContext))]
-    partial class UserManagementDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250605100622_fixUserandRoleTableName")]
+    partial class fixUserandRoleTableName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
