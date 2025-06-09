@@ -1,10 +1,10 @@
-﻿using FPMG.UserService.Repositories.Interfaces;
+﻿using FPMG.UserService.BussinessObjects.UserDTO.Response;
+using FPMG.UserService.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FPMG.UserService.WebAPIs.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
     public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;
@@ -12,20 +12,20 @@ namespace FPMG.UserService.WebAPIs.Controllers
         {
             _userRepository = userRepository;
         }
-        [HttpGet("/getAllUser")]
-        public async Task<IActionResult> GetAllUserAsync()
+        [HttpGet("api/getAllUsers")]
+        public async Task<IActionResult> GetAllUsersAsync()
         {
             var users = await _userRepository.GetAllUsersAsync();
             if (users == null || !users.Any())
             {
                 return NotFound("No users found.");
             }
-            var userList = users.Select(u => new 
+            var userList = users.Select(u => new UserResponseDTO
             {
-                u.UserId,
-                u.UserName,
-                u.Email,
-                u.Role.RoleName,
+                UserId = u.UserId,
+                UserName = u.UserName,
+                Email = u.Email,
+                RoleName = u.Role.RoleName,
             }).ToList();
             return Ok(userList);
         }
