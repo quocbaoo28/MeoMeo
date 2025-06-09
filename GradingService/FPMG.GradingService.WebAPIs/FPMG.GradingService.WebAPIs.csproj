@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\FPMG.GradingService.BussinessObjects\FPMG.GradingService.BussinessObjects.csproj" />
     <ProjectReference Include="..\FPMG.GradingService.Services\FPMG.GradingService.Services.csproj" />
   </ItemGroup>

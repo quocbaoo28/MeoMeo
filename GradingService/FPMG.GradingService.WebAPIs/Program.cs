@@ -1,5 +1,10 @@
 using FPMG.GradingService.DataAccessLayers;
+using FPMG.GradingService.Repositories;
+using FPMG.GradingService.Repositories.AutoMapper;
+using FPMG.GradingService.Repositories.Interfaces;
+using FPMG.GradingService.Services;
 using FPMG.GradingService.Services.Background;
+using FPMG.GradingService.Services.Interfaces;
 using FPMG.GradingService.Services.Messaging;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +17,9 @@ builder.Services.AddControllers();
 builder.Services.AddSingleton<IEventPushlisher, EventPublisher>();
 builder.Services.AddSingleton<IEventConsumer, EventConsumer>();
 builder.Services.AddHostedService<EventConsumerBackgroundService>();
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
+builder.Services.AddScoped<IPaymentsRepository, PaymentsRepository>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDbContext<GradingManagementDBContext>(options =>
