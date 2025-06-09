@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FPMG.UserService.BussinessObjects\FPMG.UserService.BussinessObjects.csproj" />
+    <ProjectReference Include="..\FPMG.UserService.DataAccessLayers\FPMG.UserService.DataAccessLayers.csproj" />
+  </ItemGroup>
+
 </Project>
