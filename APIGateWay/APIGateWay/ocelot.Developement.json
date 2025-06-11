@@ -14,10 +14,13 @@
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer",
         "AllowedScopes": []
+      },
+      "AddHeadersToDownstream": {
+        "Authorization": "{Authorization}"
       }
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:7184" // URL of gateway
+    "BaseUrl": "https://localhost:7184"
   }
 }
